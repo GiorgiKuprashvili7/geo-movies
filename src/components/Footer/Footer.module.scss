@@ -1,0 +1,22 @@
+@use '../../scss/variables' as *;
+
+.footer {
+  background-color: $secondary;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  p {
+    cursor: default;
+    color: $secondary-text;
+    font-size: 15px;
+    a {
+      color: $secondary-text;
+      text-decoration: none;
+      transition-duration: 100ms;
+      text-transform: capitalize;
+      &:hover {
+        color: $primary-text;
+      }
+    }
+  }
+}

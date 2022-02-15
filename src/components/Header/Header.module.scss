@@ -1,0 +1,17 @@
+@use '../../scss/variables' as *;
+
+.header {
+  background-color: $secondary;
+}
+.contant {
+  @include content-max-width;
+  @include side-paddings;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userRegister {
+  color: white;
+}

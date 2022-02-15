@@ -1,0 +1,18 @@
+$primary: rgb(31, 31, 31);
+$secondary: rgb(34, 34, 34);
+$accent: rgb(168, 163, 238);
+
+$primary-text: rgb(251, 251, 251);
+$secondary-text: rgba(255, 255, 255, 0.5);
+
+@mixin content-max-width {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+}
+
+$side-padding: 20px;
+@mixin side-paddings {
+  padding-left: $side-padding;
+  padding-right: $side-padding;
+}

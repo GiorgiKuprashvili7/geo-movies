@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,IAAI,CAAJ,2BAAI",
+    "sources": [
+        "PageNotFound.module.scss"
+    ],
+    "names": [],
+    "file": "PageNotFound.module.css"
+}
