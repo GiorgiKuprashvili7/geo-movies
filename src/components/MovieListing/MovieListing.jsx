@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from './MovieListing.module.scss'
 import { useSelector } from 'react-redux'
 import { getAllmovies, getAllShows } from '../../features/movies/movieSlise'
 import MovieCard from '../MovieCard/MovieCard'
@@ -7,7 +8,6 @@ const MovieListing = () => {
   const movies = useSelector(getAllmovies)
   const shows = useSelector(getAllShows)
 
-  console.log(movies)
   let renderMovies,
     renderShows = ''
 
@@ -17,7 +17,9 @@ const MovieListing = () => {
         return <MovieCard key={index} data={movie} />
       })
     ) : (
-      <div>{movies.Error}</div>
+      <div className={classes.error}>
+        <h3>{movies.Error}</h3>
+      </div>
     )
 
   renderShows =
@@ -26,17 +28,19 @@ const MovieListing = () => {
         return <MovieCard key={index} data={show} />
       })
     ) : (
-      <div>{shows.Error}</div>
+      <div className={classes.error}>
+        <h3>{shows.Error}</h3>
+      </div>
     )
 
   return (
-    <>
-      <h1>movies</h1>
-      <div>{renderMovies}</div>
+    <section className={classes.section}>
+      <h1 className={classes.sectionTitle}>movies</h1>
+      <div className={classes.listGrid}>{renderMovies}</div>
 
-      <h1>shows</h1>
-      <div>{renderShows}</div>
-    </>
+      <h1 className={classes.sectionTitle}>shows</h1>
+      <div className={classes.listGrid}>{renderShows}</div>
+    </section>
   )
 }
 

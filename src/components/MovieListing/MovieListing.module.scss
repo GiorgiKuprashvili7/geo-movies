@@ -1,1 +1,32 @@
 @use '../../scss/variables' as *;
+
+.error {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  h3 {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(246, 106, 106);
+  }
+}
+
+.section {
+  @include content-max-width;
+  @include side-paddings;
+  padding-bottom: 80px;
+}
+.sectionTitle {
+  font-size: 35px;
+  text-transform: capitalize;
+  margin: 40px 0 20px 0;
+  position: relative;
+  font-weight: 600;
+  color: $primary;
+}
+.listGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  column-gap: 20px;
+  row-gap: 30px;
+}

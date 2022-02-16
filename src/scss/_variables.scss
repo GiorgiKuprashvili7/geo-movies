@@ -3,7 +3,7 @@ $secondary: rgb(34, 34, 34);
 $accent: rgb(168, 163, 238);
 
 $primary-text: rgb(251, 251, 251);
-$secondary-text: rgba(255, 255, 255, 0.5);
+$secondary-text: rgba(255, 255, 255, 0.8);
 
 @mixin content-max-width {
   margin: 0 auto;
@@ -16,3 +16,5 @@ $side-padding: 20px;
   padding-left: $side-padding;
   padding-right: $side-padding;
 }
+
+$mobile-landscape: 800px;

@@ -4,10 +4,9 @@ import { APIkey } from '../../common/apis/MovieApiKey'
 
 export const fetchAsyncmovies = createAsyncThunk(
   'movies/fetchAsyncMovies',
-  async () => {
-    const movieText = 'harry'
+  async (searchValue) => {
     const response = await movieApi
-      .get(`?apiKey=${APIkey}&s=${movieText}&type=movie`)
+      .get(`?apiKey=${APIkey}&s=${searchValue}&type=movie`)
       .catch((err) => console.log(err))
 
     return response.data
@@ -16,10 +15,9 @@ export const fetchAsyncmovies = createAsyncThunk(
 
 export const fetchAsyncShows = createAsyncThunk(
   'movies/fetchAsyncShows',
-  async () => {
-    const seriesText = 'friends'
+  async (searchValue) => {
     const response = await movieApi
-      .get(`?apiKey=${APIkey}&s=${seriesText}&type=series`)
+      .get(`?apiKey=${APIkey}&s=${searchValue}&type=series`)
       .catch((err) => console.log(err))
 
     return response.data
@@ -39,39 +37,36 @@ const initialState = {
   movies: {},
   shows: {},
   selectedMovieOrShow: {},
+  loading: true,
 }
 
 export const movieSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    addMovies: (state, { payload }) => {
-      state.movies = payload
+    removeSelectedMovieOrShow: (state) => {
+      state.selectedMovieOrShow = {}
     },
   },
   extraReducers: {
-    [fetchAsyncmovies.pending]: () => {
-      console.log('panding')
-    },
+    [fetchAsyncmovies.pending]: () => {},
     [fetchAsyncmovies.fulfilled]: (state, { payload }) => {
-      console.log('fullfield')
       return { ...state, movies: payload }
     },
     [fetchAsyncmovies.rejected]: (state, { payload }) => {
       console.log('rejected')
     },
     [fetchAsyncShows.fulfilled]: (state, { payload }) => {
-      console.log('fullfield')
       return { ...state, shows: payload }
     },
     [fetchAsyncMovieOrShowDetail.fulfilled]: (state, { payload }) => {
-      console.log('fullfield')
-      return { ...state, selectedMovieOrShow: payload }
+      return { ...state, selectedMovieOrShow: payload, loading: false }
     },
   },
 })
 
-export const { addMovies } = movieSlice.actions
+export const { addMovies, removeSelectedMovieOrShow } = movieSlice.actions
+export const getLoadingState = (state) => state.movies.loading
 export const getAllmovies = (state) => state.movies.movies
 export const getAllShows = (state) => state.movies.shows
 export const getSelectedMovieOrShow = (state) =>

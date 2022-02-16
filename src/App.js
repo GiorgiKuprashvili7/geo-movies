@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movie/:imdbID" element={<MovieDetail />} />
+        <Route path="movie/:imdbID" element={<MovieDetail />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

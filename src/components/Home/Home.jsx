@@ -5,19 +5,22 @@ import {
   fetchAsyncmovies,
   fetchAsyncShows,
 } from '../../features/movies/movieSlise'
+import SearchBar from '../SearchBar/SearchBar'
 
 const Home = () => {
   const dispatch = useDispatch()
+  const movieText = 'harry'
+  const showText = 'friends'
 
   useEffect(() => {
-    dispatch(fetchAsyncmovies())
-    dispatch(fetchAsyncShows())
+    dispatch(fetchAsyncmovies(movieText))
+    dispatch(fetchAsyncShows(showText))
   }, [dispatch])
   return (
-    <div>
-      movie list
+    <>
+      <SearchBar />
       <MovieListing />
-    </div>
+    </>
   )
 }
 
